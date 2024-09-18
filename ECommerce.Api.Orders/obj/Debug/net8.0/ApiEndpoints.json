@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ECommerce.Api.Orders.Controllers.OrdersController",
+    "Method": "GetOrdersAsync",
+    "RelativePath": "api/Orders/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

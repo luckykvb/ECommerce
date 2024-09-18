@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "ECommerce.Api.Customers.Controllers.CustomerController",
+    "Method": "GetCustomerInfo",
+    "RelativePath": "api/customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerce.Api.Customers.Controllers.CustomerController",
+    "Method": "GetCustomers",
+    "RelativePath": "api/customers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

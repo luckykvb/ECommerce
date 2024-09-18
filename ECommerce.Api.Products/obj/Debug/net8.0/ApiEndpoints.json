@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "ECommerce.Api.Products.Controllers.ProductController",
+    "Method": "GetProductAsync",
+    "RelativePath": "api/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerce.Api.Products.Controllers.ProductController",
+    "Method": "GetProductById",
+    "RelativePath": "api/products/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
