@@ -31,7 +31,7 @@ stages:
             displayName: 'Install .NET Core SDK'
             inputs:
               packageType: 'sdk'
-              version: '7.x'  # Use the appropriate version
+              version: '8.x'  # Use the appropriate version
 
           # Restore NuGet packages
           - task: DotNetCoreCLI@2
