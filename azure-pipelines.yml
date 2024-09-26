@@ -25,10 +25,7 @@ stages:
         steps:
 
           # Checkout the code
-          - task: AzurePowerShell@1
-            displayName: 'Checkout Code'
-            
-
+         
           # Install .NET Core SDK (optional if using a hosted image with preinstalled SDK)
           - task: UseDotNet@2
             displayName: 'Install .NET Core SDK'
