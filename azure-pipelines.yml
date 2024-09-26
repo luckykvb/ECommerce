@@ -7,8 +7,8 @@ trigger:
       - master
 
 # Define pipeline variables (optional)
-variables:
-  buildConfiguration: 'Release'
+ 
+
 
 # Specify the stages (jobs) for the pipeline
 stages:
@@ -21,14 +21,13 @@ stages:
       - job: Build_Job
         displayName: 'Build .NET Core App'
         pool:
-          vmImage: 'ubuntu-latest'  # Use a hosted Ubuntu agent
+            vmImage: 'windows-latest'  # Use a hosted Ubuntu agent
         steps:
 
           # Checkout the code
-          - task: Checkout@1
+          - task: AzurePowerShell@1
             displayName: 'Checkout Code'
-            inputs:
-              clean: true
+            
 
           # Install .NET Core SDK (optional if using a hosted image with preinstalled SDK)
           - task: UseDotNet@2
