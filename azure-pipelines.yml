@@ -1,0 +1,73 @@
+# .NET Core build pipeline for Azure DevOps
+
+# Define the trigger branch (e.g., master)
+trigger:
+  branches:
+    include:
+      - master
+
+# Define pipeline variables (optional)
+ 
+
+
+# Specify the stages (jobs) for the pipeline
+stages:
+
+  # Build stage
+  - stage: Build
+    displayName: 'Build Stage'
+    jobs:
+    
+      - job: Build_Job
+        displayName: 'Build .NET Core App'
+        pool:
+            vmImage: 'windows-latest'  # Use a hosted Ubuntu agent
+        steps:
+
+          # Checkout the code
+         
+          # Install .NET Core SDK (optional if using a hosted image with preinstalled SDK)
+          - task: UseDotNet@2
+            displayName: 'Install .NET Core SDK'
+            inputs:
+              packageType: 'sdk'
+              version: '8.x'  # Use the appropriate version
+
+          # Restore NuGet packages
+          - task: DotNetCoreCLI@2
+            displayName: 'Restore NuGet Packages'
+            inputs:
+              command: 'restore'
+              projects: '**/*.csproj'
+
+          # Build the project
+          - task: DotNetCoreCLI@2
+            displayName: 'Build Project'
+            inputs:
+              command: 'build'
+              projects: '**/*.csproj'
+              arguments: '--configuration $(buildConfiguration)'
+
+          # Run tests (if any)
+          - task: DotNetCoreCLI@2
+            displayName: 'Run Unit Tests'
+            inputs:
+              command: 'test'
+              projects: '**/*Tests.csproj'
+              arguments: '--configuration $(buildConfiguration) --no-build --verbosity normal'
+
+          # Publish the build output (optional)
+          - task: DotNetCoreCLI@2
+            displayName: 'Publish Build Artifacts'
+            inputs:
+              command: 'publish'
+              projects: '**/*.csproj'
+              arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+          # Publish the artifacts to the Azure DevOps pipeline
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifacts'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
