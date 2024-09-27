@@ -1,0 +1,37 @@
+services:
+  ecommerce.api.customers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=6001:8080
+    ports:
+      - "6001:8080"
+
+  ecommerce.api.orders:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=6002:8080
+    ports:
+      - "6002:8080"
+
+
+  ecommerce.api.products:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=6003:8080
+    ports:
+      - "6003:8080"
+
+
+  ecommerce.api.search:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=6004:8080
+      - Services__Customers = http://ecommerce.api.customers
+      - Services__Orders = http://ecommerce.api.orders
+      - Services__products = http://ecommerce.api.products
+    ports:
+      - "6004:8080"
+
+
+  
+
